@@ -1,0 +1,9 @@
+#root{
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-auto-rows: 123px;
+}
+#root> div{
+  border: 1px solid black;
+  opacity: 0.5;
+}
