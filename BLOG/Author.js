@@ -12,10 +12,11 @@ export default function Author(props){
             setAuthor(data)
             setLoading(false);
         })();
-    },[props.useId])
+    },[props.userId])
 
  
-    return ( <Fragment>
+    return ( 
+  <Fragment>
         <Spinner show={isLoading}>
             <dl>
                 <dt>name</dt>
