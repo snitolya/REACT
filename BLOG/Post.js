@@ -6,6 +6,8 @@ import Comments from "./Comments";
 
  export default function Post(props){
     const [photo, setPhoto] = useState('');
+    const [isLoading , setLoading] = useState (true);
+
     const post = props.post;
     useEffect ( () => {
         async function fetchPhotoData(){
@@ -14,10 +16,13 @@ import Comments from "./Comments";
             setPhoto(data.url)
         }
         fetchPhotoData();
+        setLoading(false)
     },[post])
 
  
-    return (<article>
+    return (
+            <Spinner show={isLoading}>
+            <article>
             <h3> {post.title} </h3>
             <img src={photo} alt=''/>
             <p> {post.body} </p>
