@@ -18,6 +18,14 @@ const [isLoading, setLoading] = useState(true);
  
     return (
         <Fragment>
-        
-        </Fragment> );
+        <Spinner show={isLoading}>
+    {comments.map(comment =>
+            <dl className='comment'>
+                <dt>Author</dt>
+                <dd>{comment.name}</dd>
+                <dt>Text</dt>
+                <dd>{comment.body}</dd>
+            </dl>
+        </Spinner>
+         </Fragment>)
  }
