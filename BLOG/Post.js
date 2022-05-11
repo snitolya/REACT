@@ -27,6 +27,8 @@ import Comments from "./Comments";
             <img src={photo} alt=''/>
             <p> {post.body} </p>
             <Author userId ={post.userId}/>
-            <Comments userId ={post.userId}/>
-        </article>)
+            <Comments postId ={post.id}/>
+        </article>
+        </Spinner>
+        )
  }
