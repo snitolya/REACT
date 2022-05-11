@@ -1,5 +1,7 @@
 import { useEffect , useState } from 'react';
 import Author from './Author';
+import Spinner from "./Spinner";
+import Comments from "./Comments";
 
 
  export default function Post(props){
