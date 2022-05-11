@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect , useState } from 'react';
+import { Fragment, useEffect , useState } from 'react';
 import Post from './Post';
 
 
@@ -15,6 +15,6 @@ import Post from './Post';
 
  
     return (<Fragment>
-        {posts.map(p=> <Post key={p.id} post={p} />)}
+        {posts.map(p=> <Fragment><Post key={p.id} post={p} /> <hr/></Fragment>)}
         </Fragment> )
  }
