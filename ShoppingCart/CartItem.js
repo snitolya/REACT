@@ -2,7 +2,7 @@ import { Fragment, useEffect , useState } from 'react';
 
 
  export default function CartItem(props){
-    const [product, setProduct] = useState(props.product);
+    const [product, setProduct] = useState(props.product)
     const updateCount =(e)=>{
         setProduct({...product,count:Number(e.target.value)})
         props.onChangeCount(product.id, e.target.value);
