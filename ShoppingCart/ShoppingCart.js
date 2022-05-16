@@ -17,8 +17,7 @@ import CartItem from './CartItem';
     },[])
 
     const changeItemCount = (id,count)=>{
-        setProducts((products)=>
-          products.map(product=>{
+        setProducts(products.map(product=>{
               if(product.id===id){
                   return{...product,count};
               }
@@ -31,19 +30,21 @@ const removeItem = (id) => {
  setProducts (products.filter(p=> p.id!==id));
 }
 const checkout = async ()=>{
-  const response = await fetch ('http://192.168.0.200:3000/products')
+  const response = await fetch ('http://192.168.0.200:3000/products',
   {
 method:"POST",
  headers:{
 'Content-Type':'application/json'
  },
-if(response.status ===200 ){
+  body:JSON.stringify(products)
+  })
+if(response.status === 200 ){
  alert( 'WIN' );
- 
-    
+}
+}   
      return (<Fragment>
         <h3 className=''>Shopping Cart</h3>
-        <p>4 items in your cart</p>
+        <p> {products.length} items in your cart</p>
         <table className='table'>
         <thead>
             <tr>
@@ -66,8 +67,10 @@ if(response.status ===200 ){
             <tfoot>
                 <tr>
                     <td colSpan={6}>
-                    <h4 className=''>{products.reduce((acc,p)=> acc + p
-                    <button className='' onClick={checkout}>
+                    <h4 className=''>{
+                    products.reduce((acc,p)=> acc + p.price * p.count ,0)
+}</h4>
+                    <button className='' onClick={checkout}>Checkout<button/>
                     </td>
                 </tr>
             </tfoot>
