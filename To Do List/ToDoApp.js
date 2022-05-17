@@ -1,9 +1,23 @@
 import { useState , Fragment} from 'react';
-import Items from './Items';
+import Table from './Table';
 
 
 export default function ToDoApp(){
-const [app , setApp] = useState([]);
+
+const [ userInput, setUserInput ] = useState('');
+const [items , setToDoList] = useState([]);
+
+
+const handleChange = (e) => {
+  setUserInput(e.target.userInput)
+}
+
+const addTask = (e) => {
+  setToDoList ([...items, userInput]);
+  e.preventDefault();
+}
+
+
 
 return (<Fragment>
 
@@ -16,11 +30,10 @@ return (<Fragment>
 
             <h4 className="text-center my-3 pb-3">To Do App</h4>
 
-            <form className="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+            <form className="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" onSubmit={addTask}>
               <div className="col-12">
                 <div className="form-outline">
-                  <input type="text" id="form1" className="form-control" value={app.value}/>
-                  {/* <label className="form-label" htmlFor="form1">Enter a task here</label> */}
+                  <input type="text" onChange={handleChange} id="form1" className="form-control" placeholder="Enter a task here"/>
                    </div>
               </div>
 
@@ -32,9 +45,10 @@ return (<Fragment>
                 <button type="submit" className="btn btn-warning">Get tasks</button>
               </div>
             </form>
-                <Items />
+                
 
             </div>
+            <Table items ={items} />
         </div>
       </div>
     </div>
@@ -46,5 +60,6 @@ return (<Fragment>
 
 
  }
+
 
     
