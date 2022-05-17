@@ -1,11 +1,7 @@
 import { Fragment} from 'react';
-//import ToDoApp from './ToDoApp';
 
 
-
-
-export default function Items(){
-
+export default function Table(props){
 
 return(<Fragment>
     
@@ -19,33 +15,15 @@ return(<Fragment>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                  {props.items.map(item=><tr>
                   <th scope="row">1</th>
-                  <td>Buy groceries for next week</td>
+                  <td>{item}</td>
                   <td>In progress</td>
                   <td>
                     <button type="submit" className="btn btn-danger">Delete</button>
                     <button type="submit" className="btn btn-success ms-1">Finished</button>
                   </td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Renew car insurance</td>
-                  <td>In progress</td>
-                  <td>
-                    <button type="submit" className="btn btn-danger">Delete</button>
-                    <button type="submit" className="btn btn-success ms-1">Finished</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Sign up for online course</td>
-                  <td>In progress</td>
-                  <td>
-                    <button type="submit" className="btn btn-danger">Delete</button>
-                    <button type="submit" className="btn btn-success ms-1">Finished</button>
-                  </td>
-                </tr>
+                </tr> )}
               </tbody>
             </table>
 
