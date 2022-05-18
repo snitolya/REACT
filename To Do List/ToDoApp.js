@@ -1,27 +1,31 @@
-import { useState , Fragment} from 'react';
+import {Fragment, useState} from "react";
 import Table from './Table';
 
-
 export default function ToDoApp(){
+const[value,setValue] = useState('');
+const[items,setItems] = useState([]);
 
-const [ userInput, setUserInput ] = useState('');
-const [items , setToDoList] = useState([]);
 
-
-const handleChange = (e) => {
-  setUserInput(e.target.userInput)
+const ChangeInput = (e)=>{
+  setValue(e.target.value);
 }
-
-const addTask = (e) => {
-  setToDoList ([...items, userInput]);
+const AddTask = (e)=>{
+  setItems([...items, value]);/*... - это диструктуризация*/
   e.preventDefault();
+ 
+}
+
+const removeTask =(id) => {
+  setItems([...items.filter((el) => el.id !== id)])
+
 }
 
 
 
-return (<Fragment>
-
-<section className="vh-100">
+  return(
+  <Fragment>
+  
+       <section className="vh-100" >
   <div className="container py-5 h-100">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col col-lg-9 col-xl-7">
@@ -30,11 +34,11 @@ return (<Fragment>
 
             <h4 className="text-center my-3 pb-3">To Do App</h4>
 
-            <form className="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" onSubmit={addTask}>
+            <form className="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" onSubmit={AddTask}>
               <div className="col-12">
                 <div className="form-outline">
-                  <input type="text" onChange={handleChange} id="form1" className="form-control" placeholder="Enter a task here"/>
-                   </div>
+                  <input type="text" id="form1" className="form-control" onChange={ChangeInput}  placeholder="Enter a task here"/>
+                </div>
               </div>
 
               <div className="col-12">
@@ -42,24 +46,24 @@ return (<Fragment>
               </div>
 
               <div className="col-12">
-                <button type="submit" className="btn btn-warning">Get tasks</button>
+                <button type="submit" disabled className="btn btn-warning" >Get tasks</button>
               </div>
             </form>
-                
-
             </div>
-            <Table items ={items} />
+            {/* передаем наши items в компоненту Table и туда они приходят в виде пропсов */}
+         <Table items={items}
+         key={items.id}
+           removeTask={removeTask}
+         /> 
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> 
 
-</Fragment>)
-
-
-
- }
+    </Fragment>
+  )
+}
 
 
     
