@@ -9,7 +9,7 @@ function Post(){
     (async function (){
         const res = await fetch (`http://192.168.0.200:3000/posts/${id}`);
         const data = await res.json();
-        setPosts(data);
+        setPost(data);
     })();
 },[id])
 
@@ -23,4 +23,7 @@ return(<article>
 </article>)
 }
 
+
+
+export default Post;
 Post.propType={}
