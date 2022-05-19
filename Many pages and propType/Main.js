@@ -15,7 +15,7 @@ function Main(){
 
  
   return(<Fragment>
-      {posts.map(post=><article>
+      {posts.map(post=><article key={post.id}>
         <h3>{post.title}</h3>
         <img src={post.poster} alt=''></img> 
         <p>{post.intro}</p>
@@ -27,4 +27,5 @@ function Main(){
 
 export default Main ;
 Main.propType={}
+
 
