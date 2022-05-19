@@ -15,19 +15,19 @@ export default function ToDoForm({addTask}){
 
   }
 
-  const handleKeyPress = (e) =>{
-    if(e.key === "Enter"){
-      handleSubmit(e)
-    }
+//   const handleKeyPress = (e) =>{            onKeyDown={handleKeyPress} в инпуте 
+//     if(e.key === "Enter"){
+//       handleSubmit(e)
+//     }
 
-  }
+//   }
 
   return (
     
     <form className="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" onSubmit={handleSubmit}>
     <div className="col-12">
       <div className="form-outline">
-        <input type="text" id="form1" value={userInput}  onKeyDown={handleKeyPress} className="form-control" onChange={handleChange}  placeholder="Enter a task here"/>
+        <input type="text" id="form1" value={userInput}  className="form-control" onChange={handleChange}  placeholder="Enter a task here"/>
       </div>
     </div>
 
