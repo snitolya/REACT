@@ -1,9 +1,7 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Main from './Main';
-
-
 import {BrowserRouter, Route , Routes} from "react-router-dom";
+import Main from './Main';
+import Post from './Post';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
