@@ -6,9 +6,9 @@ function Main(){
     const [posts, setPosts] = useState([]);
 
     useEffect ( () => {
-        (async function fetchData(){
-            const response = await fetch (`http://192.168.0.200:3000/posts`)
-            const data = await response.json();
+        (async function (){
+            const res= await fetch (`http://192.168.0.200:3000/posts`);
+            const data = await res.json();
             setPosts(data);
         })();
     },[])
@@ -17,9 +17,9 @@ function Main(){
   return(<Fragment>
       {posts.map(post=><article key={post.id}>
         <h3>{post.title}</h3>
-        <img src={post.poster} alt=''></img> 
+        <img src={post.poster} alt=''/> 
         <p>{post.intro}</p>
-        <Link to={`/posts/${post.id}`}>Posts</Link>
+        <Link to={`/posts/${post.id}`}>Read More</Link>
       </article>)}
   </Fragment>)
 }
