@@ -33,9 +33,3 @@ code {
   width: 100%;
   box-sizing: border-box;
 }
-
-.error{
-  color: red;
-  font-weight: 700;
-  font-size: 15px;
-}
